@@ -1,0 +1,9 @@
+tornado_image: '{{ registry_host }}:{{ registry_port }}/{{ tornado_registry_dir }}'
+
+tornado_ports:
+  - '{{ tornado_port }}:{{ tornado_port }}'
+
+tornado_volumes:
+  - /etc/hosts:/etc/hosts
+
+tornado_env:

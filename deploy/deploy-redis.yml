@@ -1,0 +1,18 @@
+- hosts: redis
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present redis docker container
+      docker_container:
+        name: 'redis_{{ redis_tag }}'
+        image: '{{ redis_image }}:{{ redis_tag }}'
+        state: started
+        volumes: '{{ redis_volumes }}'
+        ports: '{{ redis_ports }}'
+    #    links:
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ redis_env }}'

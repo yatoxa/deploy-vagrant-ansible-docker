@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ redis_registry_dir }}'
+    image_tag: '{{ redis_tag }}'
+    registry_dir: '{{ redis_registry_dir }}'
+
+  vars_files:
+    - group_vars/redis.yml
+
+  roles:
+    - ping
+    - docker-image-build

@@ -1,0 +1,18 @@
+registry_tag: 2
+registry_host: '{{ groups["registry"][0] }}'
+registry_port: 5000
+
+tornado_tag: v1
+tornado_registry_dir: tornado
+tornado_host: '{{ groups["tornado"][0] }}'
+tornado_port: 8888
+
+redis_tag: v1
+redis_registry_dir: redis
+redis_host: '{{ groups["redis"][0] }}'
+redis_port: 6379
+
+mongo_tag: v1
+mongo_registry_dir: mongo
+mongo_host: '{{ groups["mongo"][0] }}'
+mongo_port: 27017

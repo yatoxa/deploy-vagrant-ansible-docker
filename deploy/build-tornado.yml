@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ tornado_registry_dir }}'
+    image_tag: '{{ tornado_tag }}'
+    registry_dir: '{{ tornado_registry_dir }}'
+
+  vars_files:
+    - group_vars/tornado.yml
+
+  roles:
+    - ping
+    - docker-image-build

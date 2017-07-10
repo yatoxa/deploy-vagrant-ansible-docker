@@ -1,0 +1,4 @@
+- name: delete docker container
+  docker_container:
+    name: {{ delete_container_name }}
+    state: absent

@@ -1,0 +1,9 @@
+mongo_image: '{{ registry_host }}:{{ registry_port }}/{{ mongo_registry_dir }}'
+
+mongo_ports:
+  - '{{ mongo_port }}:{{ mongo_port }}'
+
+mongo_volumes:
+  - /etc/hosts:/etc/hosts
+
+mongo_env:

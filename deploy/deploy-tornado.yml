@@ -1,0 +1,18 @@
+- hosts: tornado
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present tornado docker container
+      docker_container:
+        name: 'tornado_{{ tornado_tag }}'
+        image: '{{ tornado_image }}:{{ tornado_tag }}'
+        state: started
+        volumes: '{{ tornado_volumes }}'
+        ports: '{{ tornado_ports }}'
+    #    links:
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ tornado_env }}'

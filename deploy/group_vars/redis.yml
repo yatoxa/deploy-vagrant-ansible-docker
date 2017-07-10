@@ -1,0 +1,9 @@
+redis_image: '{{ registry_host }}:{{ registry_port }}/{{ redis_registry_dir }}'
+
+redis_ports:
+  - '{{ redis_port }}:{{ redis_port }}'
+
+redis_volumes:
+  - /etc/hosts:/etc/hosts
+
+redis_env:
