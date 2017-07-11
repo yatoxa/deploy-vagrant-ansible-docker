@@ -9,7 +9,7 @@
       docker_container:
         name: 'redis_{{ redis_tag }}'
         image: '{{ redis_image }}:{{ redis_tag }}'
-        state: started
+        state: present
         volumes: '{{ redis_volumes }}'
         ports: '{{ redis_ports }}'
     #    links:

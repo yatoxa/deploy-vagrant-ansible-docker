@@ -1,4 +1,0 @@
-- name: container start
-  docker_container:
-    name: '{{ container_name_start }}'
-    state: started

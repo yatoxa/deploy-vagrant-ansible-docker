@@ -12,10 +12,10 @@
 - name: copy templates to build server
   template:
     src: '{{ item }}'
-    dest: /tmp/{{ image_name }}_{{ image_tag }}/{{ item | basename | regex_replace('\.j2', '') }}
+    dest: /tmp/{{ image_name }}_{{ image_tag }}/{{ item | basename | regex_replace('\.deploy.j2', '') }}
     mode: 0600
   with_fileglob:
-    - ../templates/{{ image_name }}/*.j2
+    - ../templates/{{ image_name }}/*.deploy.j2
 
 - name: copy src/ content if exists to build root
   copy:

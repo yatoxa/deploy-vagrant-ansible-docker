@@ -9,7 +9,7 @@
       docker_container:
         name: 'mongo_{{ mongo_tag }}'
         image: '{{ mongo_image }}:{{ mongo_tag }}'
-        state: started
+        state: present
         volumes: '{{ mongo_volumes }}'
         ports: '{{ mongo_ports }}'
     #    links:

@@ -9,7 +9,7 @@
       docker_container:
         name: '{{ registry_image }}_{{ registry_tag }}'
         image: '{{ registry_image }}:{{ registry_tag }}'
-        state: started
+        state: present
         ports: '{{ registry_ports }}'
         volumes: '{{ registry_volumes }}'
         restart_policy: on-failure

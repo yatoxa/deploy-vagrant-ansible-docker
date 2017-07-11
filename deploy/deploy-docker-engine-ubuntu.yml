@@ -51,7 +51,7 @@
       with_items:
         - docker-ce
 
-    - name: start docker service
+    - name: restart docker service
       service:
         name: docker
         state: restarted

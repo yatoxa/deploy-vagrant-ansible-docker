@@ -9,7 +9,7 @@
       docker_container:
         name: 'tornado_{{ tornado_tag }}'
         image: '{{ tornado_image }}:{{ tornado_tag }}'
-        state: started
+        state: present
         volumes: '{{ tornado_volumes }}'
         ports: '{{ tornado_ports }}'
     #    links:

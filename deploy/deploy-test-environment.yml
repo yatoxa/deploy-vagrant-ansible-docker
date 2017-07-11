@@ -1,0 +1,46 @@
+- hosts: localhost
+  gather_facts: no
+  become: no
+
+  roles:
+    - put-inventory-hosts-to-known-hosts
+
+- include: deploy-docker-engine-ubuntu.yml
+    group_name=develop
+
+- include: deploy-docker-registry.yml
+- include: docker-container-change-state.yml
+    group_name=registry
+    container_name='{{ registry_image }}_{{ registry_tag }}'
+    container_state=started
+
+- hosts: develop
+  gather_facts: no
+  become: yes
+
+  roles:
+    - ping
+    - allow-docker-to-use-insecure-registry
+
+- include: build-mongo.yml
+- include: build-redis.yml
+- include: build-tornado.yml
+
+- include: deploy-mongo.yml
+- include: deploy-redis.yml
+- include: deploy-tornado.yml
+
+- include: docker-container-change-state.yml
+    group_name=mongo
+    container_name='mongo_{{ mongo_tag }}'
+    container_state=started
+
+- include: docker-container-change-state.yml
+    group_name=redis
+    container_name='redis_{{ redis_tag }}'
+    container_state=started
+
+- include: docker-container-change-state.yml
+    group_name=tornado
+    container_name='tornado_{{ tornado_tag }}'
+    container_state=started
