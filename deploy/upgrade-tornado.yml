@@ -1,0 +1,9 @@
+- include: docker-container-change-state.yml
+    group_name=tornado
+    container_name='tornado_{{ tornado_tag_prev }}'
+    container_state=stopped
+
+- include: docker-container-change-state.yml
+    group_name=tornado
+    container_name='tornado_{{ tornado_tag }}'
+    container_state=started

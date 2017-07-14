@@ -1,0 +1,18 @@
+- hosts: nginx_front
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present nginx front balancer docker container
+      docker_container:
+        name: 'nginx_front_{{ nginx_front_tag }}'
+        image: '{{ nginx_front_image }}:{{ nginx_front_tag }}'
+        state: present
+        volumes: '{{ nginx_front_volumes }}'
+        ports: '{{ nginx_front_ports }}'
+    #    links:
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ nginx_front_env }}'

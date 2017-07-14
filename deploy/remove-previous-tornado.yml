@@ -1,0 +1,19 @@
+- include: docker-container-change-state.yml
+    group_name=tornado
+    container_name='tornado_{{ tornado_tag_prev }}'
+    container_state=absent
+
+- hosts: tornado
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ tornado_image }}'
+    image_tag: '{{ tornado_tag_prev }}'
+
+  vars_files:
+    - group_vars/tornado.yml
+
+  roles:
+    - ping
+    - docker-image-remove

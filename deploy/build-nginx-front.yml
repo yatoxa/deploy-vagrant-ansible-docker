@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ nginx_front_registry_dir }}'
+    image_tag: '{{ nginx_front_tag }}'
+    registry_dir: '{{ nginx_front_registry_dir }}'
+
+  vars_files:
+    - group_vars/nginx_front.yml
+
+  roles:
+    - ping
+    - docker-image-build

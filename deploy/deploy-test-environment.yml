@@ -25,10 +25,12 @@
 - include: build-mongo.yml
 - include: build-redis.yml
 - include: build-tornado.yml
+- include: build-nginx-balancer-app.yml
 
 - include: deploy-mongo.yml
 - include: deploy-redis.yml
 - include: deploy-tornado.yml
+- include: deploy-nginx-balancer-app.yml
 
 - include: docker-container-change-state.yml
     group_name=mongo
@@ -43,4 +45,9 @@
 - include: docker-container-change-state.yml
     group_name=tornado
     container_name='tornado_{{ tornado_tag }}'
+    container_state=started
+
+- include: docker-container-change-state.yml
+    group_name=nginx_front
+    container_name='nginx_front_{{ nginx_front_tag }}'
     container_state=started

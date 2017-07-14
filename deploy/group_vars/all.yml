@@ -1,18 +1,32 @@
 registry_tag: 2
 registry_host: '{{ groups["registry"][0] }}'
 registry_port: 5000
+registry_cph: 1
+
+nginx_front_tag: v1
+nginx_front_tag_prev: v0
+nginx_front_registry_dir: nginx_front
+nginx_front_host: '{{ groups["nginx_front"][0] }}'
+nginx_front_port: 80
+nginx_front_cph: 1
 
 tornado_tag: v1
+tornado_tag_prev: v0
 tornado_registry_dir: tornado
 tornado_host: '{{ groups["tornado"][0] }}'
 tornado_port: 8888
+tornado_cph: 1
 
 redis_tag: v1
+redis_tag_prev: v0
 redis_registry_dir: redis
 redis_host: '{{ groups["redis"][0] }}'
 redis_port: 6379
+redis_cph: 1
 
 mongo_tag: v1
+mongo_tag_prev: v0
 mongo_registry_dir: mongo
 mongo_host: '{{ groups["mongo"][0] }}'
 mongo_port: 27017
+mongo_cph: 1

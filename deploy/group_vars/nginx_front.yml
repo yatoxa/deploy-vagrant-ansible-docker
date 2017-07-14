@@ -1,0 +1,9 @@
+nginx_front_image: '{{ registry_host }}:{{ registry_port }}/{{ nginx_front_registry_dir }}'
+
+nginx_front_ports:
+  - '{{ nginx_front_port }}:{{ nginx_front_port }}'
+
+nginx_front_volumes:
+  - /etc/hosts:/etc/hosts
+
+nginx_front_env:
