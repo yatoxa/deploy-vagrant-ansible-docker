@@ -7,7 +7,7 @@
 
     - name: present redis docker container
       docker_container:
-        name: 'redis_{{ redis_tag }}'
+        name: 'redis_{{ redis_tag }}_{{ inventory_hostname }}'
         image: '{{ redis_image }}:{{ redis_tag }}'
         state: present
         volumes: '{{ redis_volumes }}'

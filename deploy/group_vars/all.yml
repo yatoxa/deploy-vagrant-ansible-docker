@@ -15,7 +15,18 @@ tornado_tag_prev: v0
 tornado_registry_dir: tornado
 tornado_host: '{{ groups["tornado"][0] }}'
 tornado_port: 8888
-tornado_cph: 1
+tornado_upstream_ports:
+  - 9600
+  - 9601
+  - 9602
+  - 9603
+  - 9604
+  - 9605
+  - 9606
+  - 9607
+  - 9608
+  - 9609
+tornado_cph: 5
 
 redis_tag: v1
 redis_tag_prev: v0

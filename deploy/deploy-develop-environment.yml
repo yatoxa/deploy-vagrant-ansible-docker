@@ -9,7 +9,7 @@
     group_name=develop
 
 - include: deploy-docker-registry.yml
-- include: docker-container-change-state.yml
+- include: container-change-state.yml
     group_name=registry
     container_name='{{ registry_image }}_{{ registry_tag }}'
     container_state=started
@@ -25,29 +25,26 @@
 - include: build-mongo.yml
 - include: build-redis.yml
 - include: build-tornado.yml
-- include: build-nginx-balancer-app.yml
+- include: build-nginx-front.yml
 
 - include: deploy-mongo.yml
 - include: deploy-redis.yml
 - include: deploy-tornado.yml
-- include: deploy-nginx-balancer-app.yml
+- include: deploy-nginx-front.yml
 
-- include: docker-container-change-state.yml
+- include: container-change-state.yml
     group_name=mongo
-    container_name='mongo_{{ mongo_tag }}'
+    container_name='mongo_{{ mongo_tag }}_{{ inventory_hostname }}'
     container_state=started
 
-- include: docker-container-change-state.yml
+- include: container-change-state.yml
     group_name=redis
-    container_name='redis_{{ redis_tag }}'
+    container_name='redis_{{ redis_tag }}_{{ inventory_hostname }}'
     container_state=started
 
-- include: docker-container-change-state.yml
-    group_name=tornado
-    container_name='tornado_{{ tornado_tag }}'
-    container_state=started
+- include: tornado-start.yml
 
-- include: docker-container-change-state.yml
+- include: container-change-state.yml
     group_name=nginx_front
-    container_name='nginx_front_{{ nginx_front_tag }}'
+    container_name='nginx_front_{{ nginx_front_tag }}_{{ inventory_hostname }}'
     container_state=started

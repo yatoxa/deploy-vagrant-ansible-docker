@@ -1,6 +1,5 @@
-- include: docker-container-change-state.yml
-    group_name=tornado
-    container_name='tornado_{{ tornado_tag_prev }}'
+- include: tornado-container-change-state.yml
+    image_tag='{{ tornado_tag_prev }}'
     container_state=absent
 
 - hosts: tornado

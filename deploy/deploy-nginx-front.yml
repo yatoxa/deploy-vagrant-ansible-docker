@@ -7,7 +7,7 @@
 
     - name: present nginx front balancer docker container
       docker_container:
-        name: 'nginx_front_{{ nginx_front_tag }}'
+        name: 'nginx_front_{{ nginx_front_tag }}_{{ inventory_hostname }}'
         image: '{{ nginx_front_image }}:{{ nginx_front_tag }}'
         state: present
         volumes: '{{ nginx_front_volumes }}'

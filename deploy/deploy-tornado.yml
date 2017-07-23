@@ -7,12 +7,13 @@
 
     - name: present tornado docker container
       docker_container:
-        name: 'tornado_{{ tornado_tag }}'
+        name: 'tornado_{{ tornado_tag }}_{{ inventory_hostname }}_{{ item }}'
         image: '{{ tornado_image }}:{{ tornado_tag }}'
         state: present
         volumes: '{{ tornado_volumes }}'
-        ports: '{{ tornado_ports }}'
-    #    links:
+        ports:
+          - '{{ item }}:{{ tornado_port }}'
         restart_policy: on-failure
         restart_retries: 5
         env: '{{ tornado_env }}'
+      with_items: '{{ tornado_upstream_ports[:tornado_cph] }}'

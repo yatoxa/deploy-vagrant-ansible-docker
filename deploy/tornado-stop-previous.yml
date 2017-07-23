@@ -1,0 +1,3 @@
+- include: tornado-container-change-state.yml
+    image_tag='{{ tornado_tag_prev }}'
+    container_state=stopped

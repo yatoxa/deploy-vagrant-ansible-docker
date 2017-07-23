@@ -1,0 +1,10 @@
+- hosts: tornado
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: change state for tornado docker container
+      docker_container:
+        name: 'tornado_{{ image_tag }}_{{ inventory_hostname }}_{{ item }}'
+        state: '{{ container_state }}'
+      with_items: '{{ tornado_upstream_ports[:tornado_cph] }}'
