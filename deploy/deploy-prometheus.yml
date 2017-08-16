@@ -1,0 +1,17 @@
+- hosts: prometheus
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present prometheus docker container
+      docker_container:
+        name: 'prometheus_{{ prometheus_tag }}_{{ inventory_hostname }}'
+        image: '{{ prometheus_image }}:{{ prometheus_tag }}'
+        state: present
+        volumes: '{{ prometheus_volumes }}'
+        ports: '{{ prometheus_ports }}'
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ prometheus_env }}'

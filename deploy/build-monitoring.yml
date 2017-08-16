@@ -1,0 +1,4 @@
+- include: build-nodeexporter.yml
+- include: build-cadvisor.yml
+- include: build-prometheus.yml
+- include: build-grafana.yml

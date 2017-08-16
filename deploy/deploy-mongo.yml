@@ -12,7 +12,6 @@
         state: present
         volumes: '{{ mongo_volumes }}'
         ports: '{{ mongo_ports }}'
-    #    links:
         restart_policy: on-failure
         restart_retries: 5
         env: '{{ mongo_env }}'

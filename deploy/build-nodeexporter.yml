@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ nodeexporter_registry_dir }}'
+    image_tag: '{{ nodeexporter_tag }}'
+    registry_dir: '{{ nodeexporter_registry_dir }}'
+
+  vars_files:
+    - group_vars/nodeexporter.yml
+
+  roles:
+    - ping
+    - docker-image-build

@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ cadvisor_registry_dir }}'
+    image_tag: '{{ cadvisor_tag }}'
+    registry_dir: '{{ cadvisor_registry_dir }}'
+
+  vars_files:
+    - group_vars/cadvisor.yml
+
+  roles:
+    - ping
+    - docker-image-build

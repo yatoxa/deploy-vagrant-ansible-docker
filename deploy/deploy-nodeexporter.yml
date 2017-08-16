@@ -1,0 +1,18 @@
+- hosts: nodeexporter
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present nodeexporter docker container
+      docker_container:
+        name: 'nodeexporter_{{ nodeexporter_tag }}_{{ inventory_hostname }}'
+        image: '{{ nodeexporter_image }}:{{ nodeexporter_tag }}'
+        state: present
+        volumes: '{{ nodeexporter_volumes }}'
+        network_mode: '{{ nodeexporter_network_mode }}'
+        ports: '{{ nodeexporter_ports }}'
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ nodeexporter_env }}'

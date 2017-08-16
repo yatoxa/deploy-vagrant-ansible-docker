@@ -1,0 +1,13 @@
+nodeexporter_image: '{{ registry_host }}:{{ registry_port }}/{{ nodeexporter_registry_dir }}'
+
+nodeexporter_network_mode: 'host'
+
+nodeexporter_ports:
+  - '{{ nodeexporter_port }}:{{ nodeexporter_port }}'
+
+nodeexporter_volumes:
+  - /proc:/host/proc:ro
+  - /sys:/host/sys:ro
+  - /:/rootfs:ro
+
+nodeexporter_env:

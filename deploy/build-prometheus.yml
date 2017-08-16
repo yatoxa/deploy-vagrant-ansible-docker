@@ -1,0 +1,15 @@
+- hosts: ci
+  gather_facts: no
+  become: yes
+
+  vars:
+    image_name: '{{ prometheus_registry_dir }}'
+    image_tag: '{{ prometheus_tag }}'
+    registry_dir: '{{ prometheus_registry_dir }}'
+
+  vars_files:
+    - group_vars/prometheus.yml
+
+  roles:
+    - ping
+    - docker-image-build

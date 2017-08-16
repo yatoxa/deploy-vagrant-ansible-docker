@@ -1,0 +1,17 @@
+- hosts: grafana
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present grafana docker container
+      docker_container:
+        name: 'grafana_{{ grafana_tag }}_{{ inventory_hostname }}'
+        image: '{{ grafana_image }}:{{ grafana_tag }}'
+        state: present
+        volumes: '{{ grafana_volumes }}'
+        ports: '{{ grafana_ports }}'
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ grafana_env }}'

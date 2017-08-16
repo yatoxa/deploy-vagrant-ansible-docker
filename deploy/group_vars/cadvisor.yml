@@ -1,0 +1,12 @@
+cadvisor_image: '{{ registry_host }}:{{ registry_port }}/{{ cadvisor_registry_dir }}'
+
+cadvisor_ports:
+  - '{{ cadvisor_port }}:{{ cadvisor_port }}'
+
+cadvisor_volumes:
+  - /:/rootfs:ro
+  - /var/run:/var/run:rw
+  - /sys:/sys:ro
+  - /var/lib/docker/:/var/lib/docker:ro
+
+cadvisor_env:

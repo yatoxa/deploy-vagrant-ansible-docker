@@ -3,6 +3,32 @@ registry_host: '{{ groups["registry"][0] }}'
 registry_port: 5000
 registry_cph: 1
 
+nodeexporter_tag: v1
+nodeexporter_tag_prev: v0
+nodeexporter_registry_dir: nodeexporter
+nodeexporter_port: 9100
+nodeexporter_cph: 1
+
+cadvisor_tag: v1
+cadvisor_tag_prev: v0
+cadvisor_registry_dir: cadvisor
+cadvisor_port: 8080
+cadvisor_cph: 1
+
+prometheus_tag: v1
+prometheus_tag_prev: v0
+prometheus_registry_dir: prometheus
+prometheus_host: '{{ groups["prometheus"][0] }}'
+prometheus_port: 9090
+prometheus_cph: 1
+
+grafana_tag: v1
+grafana_tag_prev: v0
+grafana_registry_dir: grafana
+grafana_host: '{{ groups["grafana"][0] }}'
+grafana_port: 3000
+grafana_cph: 1
+
 nginx_front_tag: v1
 nginx_front_tag_prev: v0
 nginx_front_registry_dir: nginx_front

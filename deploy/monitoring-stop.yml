@@ -1,0 +1,19 @@
+- include: container-change-state.yml
+    group_name=nodeexporter
+    container_name='nodeexporter_{{ nodeexporter_tag }}_{{ inventory_hostname }}'
+    container_state=stopped
+
+- include: container-change-state.yml
+    group_name=cadvisor
+    container_name='cadvisor_{{ cadvisor_tag }}_{{ inventory_hostname }}'
+    container_state=stopped
+
+- include: container-change-state.yml
+    group_name=prometheus
+    container_name='prometheus_{{ prometheus_tag }}_{{ inventory_hostname }}'
+    container_state=stopped
+
+- include: container-change-state.yml
+    group_name=grafana
+    container_name='grafana_{{ grafana_tag }}_{{ inventory_hostname }}'
+    container_state=stopped

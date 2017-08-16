@@ -12,7 +12,6 @@
         state: present
         volumes: '{{ redis_volumes }}'
         ports: '{{ redis_ports }}'
-    #    links:
         restart_policy: on-failure
         restart_retries: 5
         env: '{{ redis_env }}'

@@ -12,7 +12,6 @@
         state: present
         volumes: '{{ nginx_front_volumes }}'
         ports: '{{ nginx_front_ports }}'
-    #    links:
         restart_policy: on-failure
         restart_retries: 5
         env: '{{ nginx_front_env }}'

@@ -1,0 +1,13 @@
+grafana_image: '{{ registry_host }}:{{ registry_port }}/{{ grafana_registry_dir }}'
+
+grafana_ports:
+  - '{{ grafana_port }}:{{ grafana_port }}'
+
+grafana_volumes:
+  - /var/lib/grafana:/var/lib/grafana
+
+grafana_env:
+  GF_SERVER_ROOT_URL: 'http://{{ grafana_host }}:{{ grafana_port }}'
+  GF_SECURITY_ADMIN_USER: admin
+  GF_SECURITY_ADMIN_PASSWORD: changeme
+  GF_USERS_ALLOW_SIGN_UP: false

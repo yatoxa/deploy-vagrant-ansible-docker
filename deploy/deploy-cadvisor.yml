@@ -1,0 +1,17 @@
+- hosts: cadvisor
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - ping:
+
+    - name: present cadvisor docker container
+      docker_container:
+        name: 'cadvisor_{{ cadvisor_tag }}_{{ inventory_hostname }}'
+        image: '{{ cadvisor_image }}:{{ cadvisor_tag }}'
+        state: present
+        volumes: '{{ cadvisor_volumes }}'
+        ports: '{{ cadvisor_ports }}'
+        restart_policy: on-failure
+        restart_retries: 5
+        env: '{{ cadvisor_env }}'
